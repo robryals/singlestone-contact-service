@@ -1,0 +1,32 @@
+SingleStone Java coding exercise by Robert Ryals
+
+Sprint Boot application using Spring Data / JPA and H2 for persistence.  The H2 database is file based, running Maven clean will re-initialize.
+
+Spring Web for Rest endpoints.
+
+I used Liquibase for managing schema creation - Spring Boot runs the schema scripts on application startup.
+This couples the schema with the version of software that requires it and simplifies deployment
+requirements / keeping various databases in sync with the application code).
+
+HTTP Request / Response Logging was added.
+
+Data validations using Hibernate Validator
+
+On the Phone numbers - I chose to make the number the primary key for simplicity.  A more correct
+solution may be to have a composite key of Contact Id and Phone Number (two contacts that share a home phone for example).
+
+Maven for dependency management and building.
+    Java 11 and Maven need to be installed
+    mvn package
+    java -jar target/contact-service-1.0.jar
+    This starts the service listening on the port 8080, change in application.properties of needed
+
+Swagger Api documentation & execution is available at /swagger-ui.html
+
+Security was not mentioned in the requirements.  I would typically use a JWT token approach with an Authentication
+controller with Basic Authentication to generate and return a JWT token.  Then use the Authentication header with a Bearer token
+to secure then Api endpoints, using Spring Security  and Annotations on the Controller endpoints.
+
+
+
+
